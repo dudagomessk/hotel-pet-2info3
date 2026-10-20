@@ -1,44 +1,43 @@
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const itens = [
+  { to: '/pets', texto: 'Pets', icone: 'bi-heart', secao: '/pets' },
+  { to: '/pets/novo', texto: 'Novo pet', icone: 'bi-plus-circle' },
+  { to: '/tutores', texto: 'Tutores', icone: 'bi-people', secao: '/tutores' },
+  { to: '/tutores/novo', texto: 'Novo tutor', icone: 'bi-person-plus' },
+];
+
+// "Pets" e "Tutores" ficam ativos na listagem e nos detalhes,
+// mas não na tela de cadastro (/novo), que tem o próprio item.
+function estaAtivo(item) {
+  if (item.secao) {
+    return (
+      route.path.startsWith(item.secao) && route.path !== `${item.secao}/novo`
+    );
+  }
+  return route.path === item.to;
+}
 </script>
 
 <template>
   <nav aria-label="Menu da PetSchool">
     <div class="nav flex-column nav-pills gap-1">
       <RouterLink
+        v-for="item in itens"
+        :key="item.to"
         class="nav-link"
-        active-class="active"
-        to="/pets"
+        :class="{ active: estaAtivo(item) }"
+        :to="item.to"
       >
         <i
-          class="bi bi-heart me-2"
-          aria-hidden="true"
+          class="bi me-2"
+          :class="item.icone"
         ></i>
-        Pets
+        {{ item.texto }}
       </RouterLink>
-
-      <RouterLink
-        class="nav-link"
-        active-class="active"
-        to="/pets/novo"
-      >
-        <i
-          class="bi bi-plus-circle me-2"
-          aria-hidden="true"
-        ></i>
-        Novo pet
-      </RouterLink>
-
-      <span
-        class="nav-link text-body-secondary"
-        aria-disabled="true"
-      >
-        <i
-          class="bi bi-people me-2"
-          aria-hidden="true"
-        ></i>
-        Tutores <small class="ms-1">(em breve)</small>
-      </span>
     </div>
   </nav>
 </template>

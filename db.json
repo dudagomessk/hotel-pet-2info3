@@ -9,6 +9,25 @@
       "id": "2",
       "nome": "Carlos",
       "telefone": "47988880000"
+    },
+    {
+      "nome": "Eduarda Gomes",
+      "telefone": "(47) 99665-5739",
+      "id": "i516dQo1Jzo"
+    },
+    {
+      "nome": "Eduarda Gomes",
+      "telefone": "47996655739",
+      "cpfCnpj": "09510863912",
+      "email": "eduardagomesnovo@gmail.com",
+      "dataNascimento": "2009-09-07",
+      "rua": "Rua dos Médicos",
+      "numero": "184",
+      "bairro": "Boehmerwald",
+      "cidade": "Joinville",
+      "estado": "SC",
+      "cep": "89235050",
+      "id": "ubmJJv__Sl4"
     }
   ],
   "pets": [
@@ -29,6 +48,12 @@
       "especie": "Hamster",
       "tutorId": "1",
       "id": "V9bTKiCwfNE"
+    },
+    {
+      "nome": "Chico",
+      "especie": "Gato",
+      "tutorId": "ubmJJv__Sl4",
+      "id": "7_J6jeFZdR4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
